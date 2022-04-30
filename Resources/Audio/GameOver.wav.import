@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/GameOver.wav-c9a5794721ac7ece5af14cc00fb11da3.sample"
+
+[deps]
+
+source_file="res://Resources/Audio/GameOver.wav"
+dest_files=[ "res://.import/GameOver.wav-c9a5794721ac7ece5af14cc00fb11da3.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

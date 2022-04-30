@@ -45,3 +45,7 @@ func SF_animar():
 	if movimiento.x > 0:
 		$Animated.set_flip_h(false)
 	pass
+
+func SF_gameover_enemigo():
+	set_process(false)
+	pass

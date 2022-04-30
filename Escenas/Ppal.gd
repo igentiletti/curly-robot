@@ -16,6 +16,7 @@ func _ready():
 	randomize()
 	SF_instanciar_engranes()
 	SF_actualizar_interfaz()
+	$ContenedorAudios/AudioMusica.play()
 	pass
 
 
@@ -33,6 +34,7 @@ func SF_instanciar_engranes():
 
 func _on_Player_colectado():
 	puntos += 1
+	$ContenedorAudios/AudioColecta.play()
 	if $ContenedorEngranes.get_child_count() == 1:
 		SF_levelup()
 	SF_actualizar_interfaz()
@@ -68,10 +70,13 @@ func SF_levelup():
 	$ContenedorTimers/TimerMensaje.start()
 	SF_instanciar_engranes()
 	tiempo = 10
+	$Bateria/TimerBateria.start()
 	pass
 
 
 func SF_gameover():
+	$ContenedorAudios/AudioMusica.stop()
+	$ContenedorAudios/AudioGameOver.play()
 	# El tiempo se pare.  Hecho
 	$ContenedorTimers/TimerPpal.stop()
 	# Qué el jugador deje de moverse y que reproduzca Hurt. Hecho
@@ -83,6 +88,8 @@ func SF_gameover():
 	$Interfaz/Mensaje.set_visible(true)
 	# Manera de reiniciar el juego. Hecho
 	$Interfaz/Button.set_visible(true)
+	# Voy a hacer que deje de moverse la motosierra
+	$Enemigo.SF_gameover_enemigo()
 	pass
 
 
@@ -99,4 +106,10 @@ func _on_TimerEnemigo_timeout():
 
 func _on_Player_atrapado():
 	SF_gameover()
+	pass
+
+
+func _on_Player_escudado():
+	$ContenedorAudios/AudioBateria.play()
+	puntos += 2;
 	pass
